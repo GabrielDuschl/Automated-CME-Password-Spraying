@@ -42,7 +42,8 @@ Automated CME Password Spraying is a Python script designed for efficient and ta
 ## Example
 
 ```shell
-python automated_password_spraying.py -u users.txt -p passwords.txt -t 3 -l 10 -d example.com -pl 8
+python3 automated_password_spraying.py -u users.txt -p passwords.txt -t 3 -l 10 -d example.com -pl 8
+```
 
 ## License
 
