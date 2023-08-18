@@ -83,4 +83,5 @@ def main():
         sys.exit(0)
 
 if __name__ == "__main__":
+    warnings.filterwarnings("ignore", category=CryptographyDeprecationWarning)
     main()
