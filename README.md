@@ -4,6 +4,8 @@
 ![License](https://img.shields.io/github/license/GabrielDuschl/Automated-CME-Password-Spraying)
 ![Last Commit](https://img.shields.io/github/last-commit/GabrielDuschl/Automated-CME-Password-Spraying)
 
+![Banner](images/github-banner.png)
+
 ## Overview
 
 Automated CME Password Spraying is a Python script designed for efficient and targeted password spraying attacks using CrackMapExec (CME). It allows you to automate the process of testing a list of passwords against a large number of users in a Windows Active Directory environment. This script is intended for legitimate testing purposes only and should not be used for any illegal activities or unauthorized access.
