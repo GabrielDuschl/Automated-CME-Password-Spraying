@@ -8,7 +8,7 @@
 
 ## Overview
 
-Automated CME Password Spraying is a Python script designed for efficient and targeted password spraying attacks using CrackMapExec (CME). It allows you to automate the process of testing a list of passwords against a large number of users in a Windows Active Directory environment. This script is intended for legitimate testing purposes only and should not be used for any illegal activities or unauthorized access.
+Automated CME Password Spraying is a Python script designed for efficient and targeted password spraying attacks using CrackMapExec (CME). It allows to automate the process of testing a list of passwords against a large number of users in a Windows Active Directory environment. After the Threshold is reached, a Reset Account Lockout counter is started. When this timer expires, the script continues. This script is intended for legitimate testing purposes only and should not be used for any illegal activities or unauthorized access.
 
 ## Features
 
