@@ -27,9 +27,8 @@ Automated CME Password Spraying is a Python script designed for efficient and ta
 
 1. Clone this repository: `git clone https://github.com/GabrielDuschl/Automated-CME-Password-Spraying.git`
 2. Navigate to the repository: `cd Automated-CME-Password-Spraying`
-3. Install required Python libraries: `pip install -r requirements.txt`
-4. Set it as executable: `chmod +x CME-Password-Spraying.py`
-5. Run the script: `python3 CME-Password-Spraying.py`
+3. Set it as executable: `chmod +x CME-Password-Spraying.py`
+4. Run the script: `python3 CME-Password-Spraying.py`
 
 ## Configuration
 
