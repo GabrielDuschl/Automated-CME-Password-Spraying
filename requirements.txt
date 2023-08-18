@@ -1,2 +1,2 @@
-crackmapexec==5.0.0
+crackmapexec
 argparse==1.4.0
