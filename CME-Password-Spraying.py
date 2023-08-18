@@ -8,19 +8,19 @@ import sys
 def banner():
     print("""
                             , ____
-                            ~(__  \.
-   .--------__               :o \. |                 __--------.
-  ( _________ \              `.  |_|                / _________ )
+                            ~(__  \\.
+   .--------__               :o \\ |                 __--------.
+  ( _________ \\              `.  |_|                / _________ )
    ( _________ `o-___________-`-.-'-_____________-o' _________ )
     ( _________  `-----------(.v(.)-------------'  _________ )
-      \____________________  `-   -'  ______________________/
-         \___________________'\ * /`_____________________/
+      \\____________________  `-   -'  ______________________/
+         \\___________________'\\ * /`_____________________/
                         ______: . :
                        / _____ /   )
                       : /    /'  /'
                       : l   /  /
                       :)   (  :---._
-                   ..//     `--------O\..
+                   ..//     `--------O\\..
 
              get yourself a cup of coffee this might take a while... :)
       """)
@@ -29,7 +29,7 @@ def main():
     parser = argparse.ArgumentParser(description="Password testing script with options.")
     parser.add_argument("--user", "-u", required=True, help="File containing user IDs")
     parser.add_argument("--password", "-p", required=True, help="File containing passwords to be tested")
-    parser.add_argument("--treshold", "-t", type=int, default=5, help="Account Lockout Threshold")
+    parser.add_argument("--threshold", "-t", type=int, default=5, help="Account Lockout Threshold")
     parser.add_argument("--lockout", "-l", type=int, default=15, help="Reset Account Lockout Counter in minutes")
     parser.add_argument("--domain", "-d", required=True, help="Domain name")
     parser.add_argument("--pass-length", "-pl", type=int, required=True, help="Minimum password length")
@@ -60,15 +60,16 @@ def main():
 
             for output_line in p.stdout:
                 if "[+]" in output_line:
-                    # print in green
-                    print("[+] Found password for" + "\033[32m {user} : {password}\033[0m".format(user=user_id, password=password))
-                    break
+                    position = output_line.find('\\') + 1
+                    output_length = len(output_line)
+                    found_password = output_line[position:output_length]
+                    print("[+] Found password: \033[92m" + found_password + "\033[0m")
 
             number_of_runs = number_of_runs + 1
             p.stdout.close()
             p.wait()
 
-            if number_of_runs == (args.treshold - 3):
+            if number_of_runs == (args.threshold - 3):
                 start_time = time.time()
                 end_time = start_time + (args.lockout * 60)
                 while time.time() < end_time:
