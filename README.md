@@ -15,9 +15,8 @@ Automated CME Password Spraying is a Python script designed for efficient and ta
 - Password spraying against user accounts in a Windows Active Directory.
 - Efficient use of CrackMapExec for password spraying attacks.
 - Automated handling of user and password lists.
-- Adjustable lockout threshold and lockout reset timer.
+- Adjustable Lockout Threshold and Lockout Reset Timer.
 - Clear reporting of successful password matches.
-- Graceful script termination with KeyboardInterrupt handling.
 
 ## Prerequisites
 
@@ -29,8 +28,8 @@ Automated CME Password Spraying is a Python script designed for efficient and ta
 1. Clone this repository: `git clone https://github.com/GabrielDuschl/Automated-CME-Password-Spraying.git`
 2. Navigate to the repository: `cd Automated-CME-Password-Spraying`
 3. Install required Python libraries: `pip install -r requirements.txt`
-4. Modify the script parameters in the `main()` function to match your environment.
-5. Run the script: `python automated_password_spraying.py`
+4. Set it as executable: `chmod +x CME-Password-Spraying.py`
+5. Run the script: `python3 CME-Password-Spraying.py`
 
 ## Configuration
 
@@ -44,7 +43,7 @@ Automated CME Password Spraying is a Python script designed for efficient and ta
 ## Example
 
 ```shell
-python3 automated_password_spraying.py -u users.txt -p passwords.txt -t 3 -l 10 -d example.com -pl 8
+python3 CME-Password-Spraying.py -u users.txt -p passwords.txt -t 3 -l 10 -d example.com -pl 8
 ```
 
 ## License
