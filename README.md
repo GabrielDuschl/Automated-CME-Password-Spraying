@@ -34,7 +34,7 @@ Automated CME Password Spraying is a Python script designed for efficient and ta
 
 - `--user` or `-u`: File containing user IDs.
 - `--password` or `-p`: File containing passwords to be tested.
-- `--treshold` or `-t`: Account Lockout Threshold (default: 5).
+- `--threshold` or `-t`: Account Lockout Threshold (default: 5).
 - `--lockout` or `-l`: Reset Account Lockout Counter in minutes (default: 15).
 - `--domain` or `-d`: Domain name for testing.
 - `--pass-length` or `-pl`: Minimum password length.
