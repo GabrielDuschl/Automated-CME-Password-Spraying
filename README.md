@@ -4,7 +4,7 @@
 ![License](https://img.shields.io/github/license/GabrielDuschl/Automated-CME-Password-Spraying)
 ![Last Commit](https://img.shields.io/github/last-commit/GabrielDuschl/Automated-CME-Password-Spraying)
 ![Maintenance](https://img.shields.io/maintenance/yes/2023)
-![Developed on](https://img.shields.io/badge/developed%20on-Kali%20Linux-pruple)
+![Developed on](https://img.shields.io/badge/developed%20on-Kali%20Linux-purple)
 
 
 ![Banner](images/github-banner.png)
